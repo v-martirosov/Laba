@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Upload Progress</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .upload-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .upload-container__image {
+            text-align: center;
+            position: relative;
+        }
+
+        .upload-container__thumbnail {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        
+        .upload-progress-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+        }
+        
+        .upload-progress-circle {
+            fill: none;
+            stroke: #4285f4;
+            stroke-width: 6;
+            stroke-linecap: round;
+            stroke-dasharray: 220;
+            stroke-dashoffset: 110;
+            animation: rotate 2s linear infinite, dash 1.5s ease-in-out infinite;
+            transform-origin: center;
+        }
+        
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes dash {
+            0% {
+                stroke-dashoffset: 220;
+            }
+            50% {
+                stroke-dashoffset: 55;
+                transform: rotate(90deg);
+            }
+            100% {
+                stroke-dashoffset: 220;
+                transform: rotate(360deg);
+            }
+        }
+
+        .upload-container__info {
+            flex: 1;
+        }
+
+        .upload-progress {
+            margin-bottom: 15px;
+        }
+
+        .upload-progress__status {
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .upload-progress__time {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .upload-info__title {
+            margin: 0 0 10px 0;
+            color: #333;
+            font-size: 20px;
+        }
+
+        .upload-info__message {
+            color: #666;
+            font-size: 14px;
+            margin: 0;
+            font-style: italic;
+        }
+
+        .upload-container__actions {
+            text-align: center;
+        }
+
+        .upload-button {
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .upload-button:hover {
+            background-color: #3367d6;
+        }
+
+        .upload-button--disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        @media (min-width: 600px) {
+            .upload-container {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            .upload-container__image {
+                flex: 0 0 200px;
+            }
+            
+            .upload-container__info {
+                flex: 1;
+            }
+            
+            .upload-container__actions {
+                flex: 0 0 100%;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .upload-container {
+                flex-wrap: nowrap;
+            }
+            
+            .upload-container__image {
+                flex: 0 0 300px;
+            }
+            
+            .upload-container__actions {
+                flex: 0 0 120px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <div class="upload-container__image">
+                <svg class="upload-progress-indicator" viewBox="0 0 100 100">
+                <circle class="upload-progress-circle" cx="50" cy="50" r="35"></circle>
+            </svg>
+        </div>
+        
+        <div class="upload-container__info">
+            <div class="upload-progress">
+                <div class="upload-progress__status">UPLOADING 50%</div>
+                <div class="upload-progress__time">About 13 minutes remaining</div>
+            </div>
+            
+            <h2 class="upload-info__title">Title of video</h2>
+            
+            <p class="upload-info__message">
+                * Your video is still uploading. Please keep this page open until it's done.
+            </p>
+        </div>
+        
+        <div class="upload-container__actions">
+            <button class="upload-button upload-button--disabled" disabled>
+                DONE
+            </button>
+        </div>
+    </div>
+</body>
+</html>

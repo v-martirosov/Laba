@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Информация о событии</title>
+    <style>
+        /* Общие стили */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .event-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .event-header {
+            margin-bottom: 20px;
+        }
+        
+        .event-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .event-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .event-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .detail-card {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .detail-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+        
+        .event-description {
+            margin-top: 20px;
+        }
+        
+        /* Стили для экранов шире 600px */
+        @media (min-width: 600px) {
+            .event-title {
+                font-size: 32px;
+            }
+            
+            .event-details {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            .detail-card {
+                flex: 1 1 calc(50% - 20px);
+                min-width: 250px;
+            }
+            
+            .detail-title {
+                font-size: 20px;
+            }
+            
+            .event-description {
+                font-size: 18px;
+                line-height: 1.8;
+            }
+        }
+        
+        /* Стили для экранов уже 600px */
+        @media (max-width: 599px) {
+            .event-title {
+                font-size: 24px;
+            }
+            
+            .detail-title {
+                font-size: 18px;
+            }
+            
+            .event-description {
+                font-size: 16px;
+            }
+            
+            .detail-card {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="event-container">
+        <div class="event-header">
+            <h1 class="event-title">Конференция по веб-разработке 2023</h1>
+            <p>15-17 ноября, Москва</p>
+        </div>
+        
+        <img src="https://via.placeholder.com/1200x400" alt="Конференция по веб-разработке" class="event-image">
+        
+        <div class="event-details">
+            <div class="detail-card">
+                <h2 class="detail-title">Дата и время</h2>
+                <p>15-17 ноября 2023</p>
+                <p>10:00 - 18:00 ежедневно</p>
+            </div>
+            
+            <div class="detail-card">
+                <h2 class="detail-title">Место проведения</h2>
+                <p>Коворкинг "Лофт"</p>
+                <p>Москва, ул. Тверская, 12</p>
+            </div>
+            
+            <div class="detail-card">
+                <h2 class="detail-title">Стоимость</h2>
+                <p>Ранний билет: 5000 руб.</p>
+                <p>Стандартный: 8000 руб.</p>
+            </div>
+            
+            <div class="detail-card">
+                <h2 class="detail-title">Организатор</h2>
+                <p>WebDev Community</p>
+                <p>contact@webdevconf.ru</p>
+            </div>
+        </div>
+        
+        <div class="event-description">
+            <h2>О событии</h2>
+            <p>Ежегодная конференция по веб-разработке собирает ведущих экспертов отрасли для обмена опытом и обсуждения последних тенденций. В этом году мы сосредоточимся на современных фреймворках, производительности веб-приложений и доступности. Ждём как начинающих разработчиков, так и опытных профессионалов.</p>
+            <p>В программе: мастер-классы, панельные дискуссии, нетворкинг и хакатон с призовым фондом.</p>
+        </div>
+    </div>
+</body>
+</html>

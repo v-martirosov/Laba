@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статья с боковым меню</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .article {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar {
+            width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            color: #444;
+            margin: 25px 0 15px 0;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .divider {
+            height: 1px;
+            background-color: #eee;
+            margin: 20px 0;
+        }
+        
+        .menu-section {
+            margin-bottom: 25px;
+        }
+        
+        .menu-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        ul {
+            list-style-type: none;
+        }
+        
+        li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        li:last-child {
+            border-bottom: none;
+        }
+        
+        @media (max-width: 800px) {
+            .sidebar {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            
+            .menu-section {
+                flex: 1;
+                min-width: 250px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .sidebar {
+                display: block;
+            }
+            
+            .menu-section {
+                min-width: 100%;
+            }
+            
+            .article, .sidebar {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="article">
+            <h1>Введение</h1>
+            <p>Современные технологии достигли такого уровня, что дальнейшее развитие различных форм деятельности, в своём классическом представлении, допускает внедрение экспериментов, поражающих по своей масштабности и грандиозности. С другой стороны, высококачественный прототип будущего проекта создаёт предпосылки для переосмысления внешнеэкономических политик.</p>
+            
+            <h2>Дополнительная информация</h2>
+            <p>Приятно, граждане, наблюдать, как элементы политического процесса, превозмогая сложившуюся непростую экономическую ситуацию, разоблачены. Являясь всего лишь частью общей картины, предприниматели в сети интернет объединены в целые кластеры себе подобных. В своём стремлении повысить качество жизни, они забывают, что граница обучения кадров требует анализа как самодостаточных, так и внешне зависимых концептуальных решений.</p>
+            <p>Безусловно, разбавленное изрядной долей эмпатии, рациональное мышление требует определения и уточнения стандартных подходов. В частности, выбранный нами инновационный путь способствует подготовке и реализации поэтапного и последовательного развития общества.</p>
+            
+            <div class="divider"></div>
+            
+            <h2>Действия</h2>
+            <ul>
+                <li>Анализ существующих решений</li>
+                <li>Разработка стратегии развития</li>
+                <li>Внедрение инновационных подходов</li>
+            </ul>
+            
+            <div class="divider"></div>
+            
+            <h2>Планы</h2>
+            <ul>
+                <li>Оптимизация бизнес-процессов</li>
+                <li>Расширение клиентской базы</li>
+            </ul>
+        </div>
+        
+        <div class="sidebar">
+            <div class="menu-section">
+                <h3>Навигация</h3>
+                <ul>
+                    <li>Главная</li>
+                    <li>О компании</li>
+                    <li>Услуги</li>
+                    <li>Портфолио</li>
+                    <li>Контакты</li>
+                </ul>
+            </div>
+            
+            <div class="menu-section">
+                <h3>Категории</h3>
+                <ul>
+                    <li>Веб-дизайн</li>
+                    <li>Разработка</li>
+                    <li>Маркетинг</li>
+                    <li>SEO</li>
+                    <li>Контент</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

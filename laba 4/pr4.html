@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог товаров - SportWorld</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #333;
+            --gray-color: #95a5a6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header__container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .header__logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .header__nav {
+            display: flex;
+        }
+        
+        .header__nav-list {
+            display: flex;
+            list-style: none;
+        }
+        
+        .header__nav-item {
+            margin-left: 1.5rem;
+        }
+        
+        .header__nav-link {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            padding: 0.5rem;
+        }
+        
+        .header__nav-link:hover {
+            color: #f39c12;
+        }
+        
+        .main {
+            flex: 1;
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .main__title {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: var(--light-color);
+            border-radius: 5px;
+        }
+        
+        .filters__group {
+            display: flex;
+            flex-direction: column;
+            min-width: 200px;
+            flex: 1;
+        }
+        
+        .filters__label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .filters__select {
+            padding: 0.5rem;
+            border: 1px solid var(--gray-color);
+            border-radius: 5px;
+        }
+        
+        .catalog {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        
+        .catalog__item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: calc(25% - 1.5rem);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .catalog__item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .catalog__image-container {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .catalog__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .catalog__item:hover .catalog__image {
+            transform: scale(1.05);
+        }
+        
+        .catalog__content {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .catalog__title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .catalog__description {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        
+        .catalog__price {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .catalog__button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            font-weight: bold;
+        }
+        
+        .catalog__button:hover {
+            background-color: #2980b9;
+        }
+        
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        
+        .footer__container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .footer__info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .footer__section {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer__title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #f39c12;
+        }
+        
+        .footer__links {
+            list-style: none;
+        }
+        
+        .footer__link {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer__link a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer__link a:hover {
+            color: #f39c12;
+        }
+        
+        .footer__social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .footer__social-icon {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .footer__social-icon:hover {
+            color: #f39c12;
+        }
+        
+        .footer__copyright {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--gray-color);
+        }
+        
+        @media (max-width: 1024px) {
+            .catalog__item {
+                width: calc(33.333% - 1.5rem);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header__container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .header__nav-list {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .header__nav-item {
+                margin: 0 0.5rem;
+            }
+            
+            .catalog__item {
+                width: calc(50% - 1.5rem);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .catalog__item {
+                width: 100%;
+            }
+            
+            .filters__group {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <a href="index.html" class="header__logo">SportWorld</a>
+            <nav class="header__nav">
+                <ul class="header__nav-list">
+                    <li class="header__nav-item"><a href="index.html" class="header__nav-link">Главная</a></li>
+                    <li class="header__nav-item"><a href="#" class="header__nav-link">Каталог</a></li>
+                    <li class="header__nav-item"><a href="#" class="header__nav-link">О нас</a></li>
+                    <li class="header__nav-item"><a href="#" class="header__nav-link">Контакты</a></li>
+                    <li class="header__nav-item"><a href="#" class="header__nav-link">Корзина</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="main">
+        <h1 class="main__title">Каталог товаров</h1>
+        
+        <div class="filters">
+            <div class="filters__group">
+                <label for="category" class="filters__label">Категория</label>
+                <select id="category" class="filters__select">
+                    <option value="all">Все категории</option>
+                    <option value="football">Футбол</option>
+                    <option value="running">Бег</option>
+                    <option value="fitness">Фитнес</option>
+                    <option value="yoga">Йога</option>
+                </select>
+            </div>
+            
+            <div class="filters__group">
+                <label for="price" class="filters__label">Цена</label>
+                <select id="price" class="filters__select">
+                    <option value="all">Любая цена</option>
+                    <option value="low">До 3 000 ₽</option>
+                    <option value="medium">3 000 - 7 000 ₽</option>
+                    <option value="high">От 7 000 ₽</option>
+                </select>
+            </div>
+            
+            <div class="filters__group">
+                <label for="brand" class="filters__label">Бренд</label>
+                <select id="brand" class="filters__select">
+                    <option value="all">Все бренды</option>
+                    <option value="nike">Nike</option>
+                    <option value="adidas">Adidas</option>
+                    <option value="puma">Puma</option>
+                    <option value="reebok">Reebok</option>
+                </select>
+            </div>
+            
+            <div class="filters__group">
+                <label for="sort" class="filters__label">Сортировка</label>
+                <select id="sort" class="filters__select">
+                    <option value="popular">По популярности</option>
+                    <option value="price-asc">По возрастанию цены</option>
+                    <option value="price-desc">По убыванию цены</option>
+                    <option value="newest">Сначала новые</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="catalog">
+            <div class="catalog__item">
+                <div class="catalog__image-container">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Беговые кроссовки Nike" class="catalog__image">
+                </div>
+                <div class="catalog__content">
+                    <h3 class="catalog__title">Беговые кроссовки Nike Air Zoom</h3>
+                    <p class="catalog__description">Легкие и удобные кроссовки для бега с амортизацией. Подходят для длительных тренировок.</p>
+                    <div class="catalog__price">8 499 ₽</div>
+                    <button class="catalog__button">Добавить в корзину</button>
+                </div>
+            </div>
+            
+            <div class="catalog__item">
+                <div class="catalog__image-container">
+                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Футбольный мяч Adidas" class="catalog__image">
+                </div>
+                <div class="catalog__content">
+                    <h3 class="catalog__title">Футбольный мяч Adidas Champions League</h3>
+                    <p class="catalog__description">Официальный мяч Лиги Чемпионов. Размер 5, вес 450 г, синтетическая кожа.</p>
+                    <div class="catalog__price">4 999 ₽</div>
+                    <button class="catalog__button">Добавить в корзину</button>
+                </div>
+            </div>
+            
+            <div class="catalog__item">
+                <div class="catalog__image-container">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Гантели" class="catalog__image">
+                </div>
+                <div class="catalog__content">
+                    <h3 class="catalog__title">Гантели стальные 10 кг</h3>
+                    <p class="catalog__description">Прорезиненные блины для комфортных тренировок. Хромированный гриф.</p>
+                    <div class="catalog__price">3 299 ₽</div>
+                    <button class="catalog__button">Добавить в корзину</button>
+                </div>
+            </div>
+            <div class="catalog__item">
+                <div class="catalog__image-container">
+                    <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Горный велосипед" class="catalog__image">
+                </div>
+                <div class="catalog__content">
+                    <h3 class="catalog__title">Горный велосипед Stels Navigator-500</h3>
+                    <p class="catalog__description">21 скорость, алюминиевая рама, дисковые тормоза, амортизационная вилка.</p>
+                    <div class="catalog__price">25 999 ₽</div>
+                    <button class="catalog__button">Добавить в корзину</button>
+                </div>
+            </div>
+            <div class="catalog__item">
+                <div class="catalog__image-container">
+                    <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Йога коврик" class="catalog__image">
+                </div>
+                <div class="catalog__content">
+                    <h3 class="catalog__title">Йога коврик Premium</h3>
+                    <p class="catalog__description">Антискользящий коврик для йоги, толщина 6 мм, с чехлом и ремнем для переноски.</p>
+                    <div class="catalog__price">1 799 ₽</div>
+                    <button class="catalog__button">Добавить в корзину</button>
+                </div>
+            </div>
+            
+            <div class="catalog__item">
+                <div class="catalog__image-container">
+                    <img src="https://images.unsplash.com/photo-1599744357905-6baff6d6fb1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Спортивный рюкзак" class="catalog__image">
+                </div>
+                <div class="catalog__content">
+                    <h3 class="catalog__title">Спортивный рюкзак Adidas</h3>
+                    <p class="catalog__description">Вместительный рюкзак для тренировок с отделением для обуви и карманом для бутылки.</p>
+                    <div class="catalog__price">3 599 ₽</div>
+                    <button class="catalog__button">Добавить в корзину</button>
+                </div>
+            </div>
+            <div class="catalog__item">
+                <div class="catalog__image-container">
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Фитнес-браслет" class="catalog__image">
+                </div>
+                <div class="catalog__content">
+                    <h3 class="catalog__title">Фитнес-браслет Xiaomi Mi Band 6</h3>
+                    <p class="catalog__description">Мониторинг пульса, сна, шагов. Водонепроницаемость, уведомления, AMOLED-экран.</p>
+                    <div class="catalog__price">3 299 ₽</div>
+                    <button class="catalog__button">Добавить в корзину</button>
+                </div>
+            </div>
+            
+            <div class="catalog__item">
+                <div class="catalog__image-container">
+                    <img src="https://images.unsplash.com/photo-1579751626658-0b2f20c2659a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Теннисная ракетка" class="catalog__image">
+                </div>
+                <div class="catalog__content">
+                    <h3 class="catalog__title">Теннисная ракетка Wilson Pro Staff</h3>
+                    <p class="catalog__description">Профессиональная ракетка для большого тенниса. Вес 300 г, баланс 32 см.</p>
+                    <div class="catalog__price">12 999 ₽</div>
+                    <button class="catalog__button">Добавить в корзину</button>
+                </div>
+            </div>
+            
+            <div class="catalog__item">
+                <div class="catalog__image-container">
+                    <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Спортивные очки" class="catalog__image">
+                </div>
+                <div class="catalog__content">
+                    <h3 class="catalog__title">Спортивные очки Oakley Radar</h3>
+                    <p class="catalog__description">Защитные очки для бега и велоспорта с поляризованными линзами и UV-фильтром.</p>
+                    <div class="catalog__price">9 499 ₽</div>
+                    <button class="catalog__button">Добавить в корзину</button>
+                </div>
+            </div>
+            
+            <div class="catalog__item">
+                <div class="catalog__image-container">
+                    <img src="https://images.unsplash.com/photo-1595079835353-a4029a0132c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Спортивные штаны" class="catalog__image">
+                </div>
+                <div class="catalog__content">
+                    <h3 class="catalog__title">Спортивные штаны Nike Dri-FIT</h3>
+                    <p class="catalog__description">Легкие дышащие штаны для тренировок с влагоотводящей технологией.</p>
+                    <div class="catalog__price">4 299 ₽</div>
+                    <button class="catalog__button">Добавить в корзину</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__info">
+                <div class="footer__section">
+                    <h3 class="footer__title">О компании</h3>
+                    <ul class="footer__links">
+                        <li class="footer__link"><a href="#">О нас</a></li>
+                        <li class="footer__link"><a href="#">Наши магазины</a></li>
+                        <li class="footer__link"><a href="#">Вакансии</a></li>
+                        <li class="footer__link"><a href="#">Новости</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Помощь</h3>
+                    <ul class="footer__links">
+                        <li class="footer__link"><a href="#">Доставка и оплата</a></li>
+                        <li class="footer__link"><a href="#">Возврат и обмен</a></li>
+                        <li class="footer__link"><a href="#">Гарантия</a></li>
+                        <li class="footer__link"><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Контакты</h3>
+                    <ul class="footer__links">
+                        <li class="footer__link"><a href="tel:+77777777777">+7 (777) 777-77-77</a></li>
+                        <li class="footer__link"><a href="mailto:info@sportworld.ru">info@sportworld.ru</a></li>
+                        <li class="footer__link">Владимир, ул. Горького, 106</li>
+                        <li class="footer__link">Ежедневно с 9:00 до 21:00</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer__social">
+                <a href="#" class="footer__social-icon">Facebook</a>
+                <a href="#" class="footer__social-icon">Instagram</a>
+                <a href="#" class="footer__social-icon">VK</a>
+                <a href="#" class="footer__social-icon">YouTube</a>
+            </div>
+            
+            <p class="footer__copyright">© 2025 SportWorld. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>
